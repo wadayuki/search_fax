@@ -1,9 +1,14 @@
 require 'find'
+ File.open("/Users/glodia/desktop/list.txt","w+")
 include Find
 find('\Users\glodia\rubyfiles'){|fl| 
     if fl.include?("test")
-        print("テストファイルです\n")
+        File.open("/Users/glodia/desktop/list.txt","a") {|f|
+        f.puts fl
+            }
         else
-        print("テストファイルではありません\n")
+        File.open("/Users/glodia/desktop/list.txt","a") {|f|
+        f.print("対象ファイルではありません\n")
+            }
     end
     }
